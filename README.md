@@ -60,25 +60,27 @@ ___
 src='https://i.imgur.com/LyHic3i.gif'/></a>
 
 ### 1. Repository Clone Karein
+<a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
 
 ```bash
 https://github.com/Boss-Rahat/Xrahat_Mirai-BOtt.git
 ```
-
+<a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
 ### 2. Dependencies Installed
+<a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
 
 ```bash
 npm install
 ```
 
 ### 3. Facebook Appstate Add Do it
-
+<a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
 - Paste your Facebook account's ```appstate.json``` file in the root folder.
 
 - Ensure that the file is valid and updated.
 
 ### 4. Run the Bot
-
+<a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
 ```bash
 node Xrahat.js
 ```
@@ -87,14 +89,13 @@ node Xrahat.js
 ###  🔰𝗥𝗮𝗵𝗮𝘁_𝗕𝗼𝘁🔰
 ❖ ***`বট রান দিতে সমস্যা হলে ফেসবুকে যোগাযোগ করো
 ❖👇নিচে আইডির লিঙ্ক আছে👇❖`** ❖
-
 ----------
 ## Facebook ID:👉 <a href="https://www.facebook.com/share/14N3ACfd4fM/">Link</a>
 
 <p align="center">
   <a href="#"><img src="http://readme-typing-svg.herokuapp.com?color=cyan&center=true&vCenter=true&multiline=false&lines=`🔰𝗥𝗮𝗵𝗮𝘁_𝗕𝗼𝘁🔰`" alt="">
 </p>
-
+<a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
 ## License
 
 This project is licensed under the GNU General Public License v3.0 or later - see the [COPYING](./COPYING) file for details.
@@ -106,6 +107,7 @@ This project is licensed under the GNU General Public License v3.0 or later - se
 > ⚠️ This is a modified version. See License section below for usage rights.
 
 ---
+<a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
 ### 💬 Thanks for visiting!
 <a><img       
 src='https://i.imgur.com/LyHic3i.gif'/></a>
