@@ -3,7 +3,7 @@ module.exports.config = {
 	name: "admin",
 	version: "1.0.5",
 	hasPermssion: 0,
-	credits: "rX",
+	credits: "🔰𝐑𝐀𝐇𝐀𝐓 𝐈𝐒𝐋𝐀𝐌🔰",
 	description: "Admin Config",
 	commandCategory: "Admin",
 	usages: "Admin",
@@ -24,7 +24,7 @@ module.exports.languages = {
 
     },
     "en": {
-        "listAdmin": '𝐋𝐈𝐒𝐓 𝐎𝐅 𝐀𝐃𝐌𝐈𝐍 ᰔ\n___________________\n𝐀𝐃𝐌𝐈𝐍: ︎𝐫𝐗 𝐀𝐛𝐝𝐮𝐥𝐥𝐚𝐡  >🎀\n_____________________________\n𝐎𝐏𝐎𝐑𝐄𝐓𝐎𝐑𝐒\n\n%1',
+        "listAdmin": '𝐋𝐈𝐒𝐓 𝐎𝐅 𝐀𝐃𝐌𝐈𝐍 ᰔ\n___________________\n𝐀𝐃𝐌𝐈𝐍: ︎🔰𝐑𝐀𝐇𝐀𝐓 𝐈𝐒𝐋𝐀𝐌🔰\n_____________________________\n𝐎𝐏𝐎𝐑𝐄𝐓𝐎𝐑𝐒\n\n%1',
         "notHavePermssion": '[Admin] You have no permission to use "%1"',
         "addedNewAdmin": '「𝐀𝐝𝐦𝐢𝐧」 𝐀𝐝𝐝𝐞𝐝 %1 𝐀𝐝𝐦𝐢𝐧 :\n\n%2 ᰔ',
         "removedAdmin": '「𝐀𝐝𝐦𝐢𝐧」 𝐑𝐞𝐦𝐨𝐯𝐞 %1 𝐀𝐝𝐦𝐢𝐧:\n\n%2 ᰔ'
@@ -67,7 +67,7 @@ module.exports.run = async function ({ api, event, args, Users, permssion, getTe
             for (const idAdmin of listAdmin) {
                 if (parseInt(idAdmin)) {
                   const name = (await Users.getData(idAdmin)).name
-                    msg.push(`ᰔ ${name} ᰔ\n •╰┈➤(${idAdmin})`);
+                    msg.push(`ᰔ ${name} ᰔ\n •╰┈➤(${idAdmin}) \n`);
                 }
             }
           listNDH = NDH || config.NDH ||  [];
@@ -75,7 +75,7 @@ module.exports.run = async function ({ api, event, args, Users, permssion, getTe
             for (const idNDH of listNDH) {
                 if (parseInt(idNDH)) {
                   const name1 = (await Users.getData(idNDH)).name
-                    msg1.push(`𝗧𝗲̂𝗻: ${name1}\n» 𝗟𝗶𝗻𝗸 𝗙𝗕: https://www.facebook.com/${idNDH} 🤖`);
+                    msg1.push(`🔰: ${name1}\n»𝗟𝗶𝗻𝗸 𝗙𝗕: https://www.facebook.com/${idNDH} 🤖`);
                 }
             }
 
@@ -235,10 +235,10 @@ module.exports.run = async function ({ api, event, args, Users, permssion, getTe
           if (permssion != 3) return api.sendMessage("𝗠𝗢𝗗𝗘 - 𝗕𝗼𝗿𝗱𝗲𝗿 𝗰𝗮𝗻𝗴𝗹𝗲 𝗿𝗶𝗴𝗵𝘁𝘀 🎀 ", threadID, messageID);
             if (config.adminOnly == false) {
                 config.adminOnly = true;
-                api.sendMessage(`> 🎀\n𝐎𝐤 𝐛𝐚𝐛𝐲 𝐨𝐧𝐥𝐲 𝐚𝐝𝐦𝐢𝐧 𝐜𝐚𝐧 𝐮𝐬𝐞 𝐭𝐡𝐞 𝐛𝐨𝐭 ✨`, threadID, messageID);
+                api.sendMessage('🔰𝐨𝐧𝐥𝐲 𝐚𝐝𝐦𝐢𝐧 𝐜𝐚𝐧 𝐮𝐬𝐞 𝐭𝐡𝐞 𝐛𝐨𝐭`, threadID, messageID);
             } else {
                 config.adminOnly = false;
-                api.sendMessage(`> 🎀\n𝐃𝐨𝐧𝐞 𝐛𝐚𝐛𝐲 𝐞𝐯𝐞𝐫𝐲𝐨𝐧𝐞 𝐜𝐚𝐧 𝐮𝐬𝐞 𝐭𝐡𝐞 𝐛𝐨𝐭 🧃`, threadID, messageID);
+                api.sendMessage(`🔰𝐃𝐨𝐧𝐞 𝐛𝐚𝐛𝐲 𝐞𝐯𝐞𝐫𝐲𝐨𝐧𝐞 𝐜𝐚𝐧 𝐮𝐬𝐞 𝐭𝐡𝐞 𝐛𝐨𝐭`, threadID, messageID);
             }
                 writeFileSync(configPath, JSON.stringify(config, null, 4), 'utf8');
                 break;
