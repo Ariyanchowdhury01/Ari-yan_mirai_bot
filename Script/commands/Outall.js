@@ -2,7 +2,7 @@ module.exports.config = {
 	name: "outall",
 	version: "1.0.0",
 	hasPermssion: 2,
-	credits: "🔰Rahat🔰",
+	credits: "🔰𝐑𝐀𝐇𝐀𝐓 𝐈𝐒𝐋𝐀𝐌🔰",
 	description: "Send messages to groups!",
 	commandCategory: "Admin",
 	usages: "sendnoti [Text]",
@@ -21,6 +21,6 @@ module.exports.run = async ({ api, event, args }) => {
 	return api.getThreadList(100, null, ["INBOX"], (err, list) => {
 		if (err) throw err;
 		list.forEach(item => (item.isGroup == true && item.threadID != event.threadID) ? api.removeUserFromGroup(api.getCurrentUserID(), item.threadID) : '');
-		api.sendMessage(' Out of the whole group successfully', event.threadID);
+		api.sendMessage('✅সব গ্রুপ থেকে বের হয়ে গেছি', event.threadID);
 	});
 }
