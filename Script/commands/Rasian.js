@@ -6,7 +6,7 @@ module.exports.config = {
  name: "rasian",
  version: "1.0.2",
  hasPermission: 0,
- credits: "Shaon Ahmed",
+ credits: "🔰𝐑𝐀𝐇𝐀𝐓 𝐈𝐒𝐋𝐀𝐌🔰",
  description: "Send a random shoti (TikTok short video)",
  commandCategory: "media",
  usages: "",
