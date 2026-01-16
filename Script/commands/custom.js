@@ -12,7 +12,7 @@ module.exports.config = {
   name: "custom",
   version: "1.1.0",
   hasPermssion: 0,
-  credits: "rX Abdullah",
+  credits: "🔰𝐑𝐀𝐇𝐀𝐓 𝐈𝐒𝐋𝐀𝐌🔰",
   usePrefix: true,
   description: "Group-specific custom auto reply",
   commandCategory: "system",
