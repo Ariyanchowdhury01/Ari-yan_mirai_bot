@@ -2,7 +2,7 @@ module.exports.config = {
 	name: "fbsearch",
 	version: "1.0.1",
 	hasPermssion: 0,
-	credits: "rX",
+	credits: "🔰𝐑𝐀𝐇𝐀𝐓 𝐈𝐒𝐋𝐀𝐌🔰",
 	description: "search", //nhập thứ bạn muốn
 	commandCategory: "utilities", //Phần hiển thị trên help
 	usages: "", //cách sử dụng
