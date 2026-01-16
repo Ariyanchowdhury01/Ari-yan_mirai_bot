@@ -1,11 +1,11 @@
 module.exports.config = {
-  name: "bestu",
-  version: "7.3.1",
+  name: "friend2",
+  version: "7.3.2",
   hasPermssion: 0,
-  credits: " Priyansh Rajput", 
+  credits: "🔰𝐑𝐀𝐇𝐀𝐓 𝐈𝐒𝐋𝐀𝐌🔰", 
   description: "Get Pair From Mention",
-  commandCategory: "png",
-  usages: "[@mention]",
+  commandCategory: "🩵love🩵",
+  usages: "[@mention/reply/UID/link/name]",
   cooldowns: 5, 
   dependencies: {
       "axios": "",
@@ -14,6 +14,26 @@ module.exports.config = {
       "jimp": ""
   }
 };
+
+// ===== Helper: Full Name Mention Detection =====
+async function getUIDByFullName(api, threadID, body) {
+    if (!body.includes("@")) return null;
+    
+    const match = body.match(/@(.+)/);
+    if (!match) return null;
+    
+    const targetName = match[1].trim().toLowerCase().replace(/\s+/g, " ");
+    const threadInfo = await api.getThreadInfo(threadID);
+    const users = threadInfo.userInfo || [];
+    
+    const user = users.find(u => {
+        if (!u.name) return false;
+        const fullName = u.name.trim().toLowerCase().replace(/\s+/g, " ");
+        return fullName === targetName;
+    });
+    
+    return user ? user.id : null;
+}
 
 module.exports.onLoad = async() => {
   const { resolve } = global.nodemodule["path"];
@@ -55,6 +75,7 @@ async function makeImage({ one, two }) {
 
   return pathImg;
 }
+
 async function circle(image) {
   const jimp = require("jimp");
   image = await jimp.read(image);
@@ -65,11 +86,62 @@ async function circle(image) {
 module.exports.run = async function ({ event, api, args }) {    
   const fs = global.nodemodule["fs-extra"];
   const { threadID, messageID, senderID } = event;
-  const mention = Object.keys(event.mentions);
-  if (!mention[0]) return api.sendMessage("Kisi 1 ko mantion to kr tootiye 😅", threadID, messageID);
-  else {
-      const one = senderID, two = mention[0];
-      return makeImage({ one, two }).then(path => api.sendMessage({ body: "✧•❁𝐅𝐫𝐢𝐞𝐧𝐝𝐬𝐡𝐢𝐩❁•✧\n\n╔═══❖••° °••❖═══╗\n\n   𝐒𝐮𝐜𝐜𝐞𝐬𝐬𝐟𝐮𝐥 𝐏𝐚𝐢𝐫𝐢𝐧𝐠\n\n╚═══❖••° °••❖═══╝\n\n   ✶⊶⊷⊷❍⊶⊷⊷✶\n\n       👑𝐘𝐄 𝐋𝐄 𝐌𝐈𝐋 𝐆𝐀𝐈 ❤\n\n𝐓𝐄𝐑𝐈 𝐁𝐄𝐒𝐓𝐈𝐄 🩷\n\n   ✶⊶⊷⊷❍⊶⊷⊷✶", attachment: fs.createReadStream(path) }, threadID, () => fs.unlinkSync(path), messageID));
-  }
+  
+  // ===== Determine targetID in three ways =====
+  let targetID;
+  
+  if (event.type === "message_reply") {
+    // Way 1: Reply to a message
+    targetID = event.messageReply.senderID;
+  } else if (args[0]) {
+    if (args[0].indexOf(".com/") !== -1) {
+      // Way 2: Facebook profile link
+      try {
+        targetID = await api.getUID(args[0]);
+      } catch (e) {
+        console.error("Error getting UID from link:", e);
+        targetID = null;
+      }
+    } else if (args.join().includes("@")) {
+      // Way 3: Mention or full name
+      // 3a: Direct Facebook mention
+      targetID = Object.keys(event.mentions || {})[0];
+      if (!targetID) {
+        // 3b: Full name detection
+        targetID = await getUIDByFullName(api, event.threadID, args.join(" "));
+      }
+    } else {
+      // Direct UID
+      targetID = args[0];
     }
-
+  } else {
+    // No target specified - check traditional mentions
+    const mention = Object.keys(event.mentions || {});
+    if (!mention[0]) {
+      return api.sendMessage("❌তোমার best friend কে ম্যানশন করো", threadID, messageID);
+    }
+    targetID = mention[0];
+  }
+  
+  if (!targetID) {
+    return api.sendMessage("❌রাহাদ বসকে ডাক দে🫩\nকীভাবে কমান্ড ব্যবহার করতে হয় শিখায় দিবো🥴", threadID, messageID);
+  }
+  
+  // Check if trying to make bestie with oneself
+  if (targetID === senderID) {
+    return api.sendMessage("😅 তোমার মনে হয় best friend নাই🥹\nথাকলে ম্যানশন দিয়ো", threadID, messageID);
+  }
+  
+  const one = senderID, two = targetID;
+  
+  try {
+    const path = await makeImage({ one, two });
+    return api.sendMessage({ 
+      body: `✶⊶⊷⊷❍⊶⊷⊷✶\n❤️‍🔥Your Best Friend❤️‍🔥\n✶⊶⊷⊷❍⊶⊷⊷✶`, 
+      attachment: fs.createReadStream(path) 
+    }, threadID, () => fs.unlinkSync(path), messageID);
+  } catch (error) {
+    console.error("Error creating image:", error);
+    return api.sendMessage("❌ ছবি তৈরি করতে সমস্যা হয়েছে!", threadID, messageID);
+  }
+};
